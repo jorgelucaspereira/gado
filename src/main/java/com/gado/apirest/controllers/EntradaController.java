@@ -3,10 +3,7 @@ package com.gado.apirest.controllers;
 import com.gado.apirest.models.Entrada;
 import com.gado.apirest.repositories.EntradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +23,9 @@ public class EntradaController {
     public Entrada listaEntradaUnica(@PathVariable(value = "id") long id){
         return entradaRepository.findById(id);
     }
+
+   @PostMapping("/entrada")
+    public Entrada salvaEntrada(@RequestBody Entrada entrada) {
+        return entradaRepository.save(entrada);
+   }
 }
