@@ -1,4 +1,4 @@
-package com.gado.apirest.repository;
+package com.gado.apirest.repositories;
 
 import com.gado.apirest.models.Lote;
 import org.springframework.data.jpa.repository.JpaRepository;

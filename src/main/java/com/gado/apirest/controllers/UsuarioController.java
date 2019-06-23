@@ -1,7 +1,7 @@
-package com.gado.apirest.controller;
+package com.gado.apirest.controllers;
 
 import com.gado.apirest.models.Usuario;
-import com.gado.apirest.repository.UsuarioRepository;
+import com.gado.apirest.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
