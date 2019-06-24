@@ -15,17 +15,27 @@ public class GastoController {
     GastoRepository gastoRepository;
 
     @GetMapping("/gastos")
-    public List<Gasto> listaGasto(){
+    public List<Gasto> listaGasto() {
         return gastoRepository.findAll();
     }
 
     @GetMapping("/gasto/{id}")
-    public Gasto listaGastoUnico(@PathVariable(value = "id") long id){
+    public Gasto listaGastoUnico(@PathVariable(value = "id") long id) {
         return gastoRepository.findById(id);
     }
 
     @PostMapping("/gasto")
     public Gasto salvaGasto(@RequestBody Gasto gasto) {
+        return gastoRepository.save(gasto);
+    }
+
+    @DeleteMapping("/gasto")
+    public void deletaGasto(@RequestBody Gasto gasto) {
+        gastoRepository.delete(gasto);
+    }
+
+    @PutMapping("/gasto")
+    public Gasto atualizaGasto(@RequestBody Gasto gasto) {
         return gastoRepository.save(gasto);
     }
 }

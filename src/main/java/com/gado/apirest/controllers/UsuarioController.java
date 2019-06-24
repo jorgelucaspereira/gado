@@ -15,17 +15,27 @@ public class UsuarioController {
     UsuarioRepository usuarioRepository;
 
     @GetMapping("/usuarios")
-    public List<Usuario> listaUsuario(){
+    public List<Usuario> listaUsuario() {
         return usuarioRepository.findAll();
     }
 
     @GetMapping("/usuario/{id}")
-    public Usuario listaUsuarioUnico(@PathVariable(value = "id") long id){
+    public Usuario listaUsuarioUnico(@PathVariable(value = "id") long id) {
         return usuarioRepository.findById(id);
     }
 
     @PostMapping("/usuario")
     public Usuario salvaUsuario(@RequestBody Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
+    @DeleteMapping("/usuario")
+    public void deletaUsuario(@RequestBody Usuario usuario) {
+        usuarioRepository.delete(usuario);
+    }
+
+    @PutMapping("/usuario")
+    public Usuario atualizaUsuario(@RequestBody Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 }

@@ -15,17 +15,27 @@ public class SaidaController {
     SaidaRepository saidaRepository;
 
     @GetMapping("/saidas")
-    public List<Saida> listaSaida(){
+    public List<Saida> listaSaida() {
         return saidaRepository.findAll();
     }
 
     @GetMapping("/saida/{id}")
-    public Saida listaSaidaUnica(@PathVariable(value = "id") long id){
+    public Saida listaSaidaUnica(@PathVariable(value = "id") long id) {
         return saidaRepository.findById(id);
     }
 
     @PostMapping("/saida")
     public Saida salvaSaida(@RequestBody Saida saida) {
+        return saidaRepository.save(saida);
+    }
+
+    @DeleteMapping("/saida")
+    public void deletaSaida(@RequestBody Saida saida) {
+        saidaRepository.delete(saida);
+    }
+
+    @PutMapping("/saida")
+    public Saida atualizaSaida(@RequestBody Saida saida) {
         return saidaRepository.save(saida);
     }
 }

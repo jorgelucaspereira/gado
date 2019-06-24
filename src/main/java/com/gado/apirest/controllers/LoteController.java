@@ -15,17 +15,27 @@ public class LoteController {
     LoteRepository loteRepository;
 
     @GetMapping("/lotes")
-    public List<Lote> listaLote(){
+    public List<Lote> listaLote() {
         return loteRepository.findAll();
     }
 
     @GetMapping("/lote/{id}")
-    public Lote listaLoteUnico(@PathVariable(value = "id") long id){
+    public Lote listaLoteUnico(@PathVariable(value = "id") long id) {
         return loteRepository.findById(id);
     }
 
     @PostMapping("/lote")
     public Lote salvaLote(@RequestBody Lote lote) {
+        return loteRepository.save(lote);
+    }
+
+    @DeleteMapping("/lote")
+    public void deletaLote(@RequestBody Lote lote) {
+        loteRepository.delete(lote);
+    }
+
+    @PutMapping("/lote")
+    public Lote atualizaLote(@RequestBody Lote lote) {
         return loteRepository.save(lote);
     }
 }

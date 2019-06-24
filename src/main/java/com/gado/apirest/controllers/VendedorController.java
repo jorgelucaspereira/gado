@@ -15,17 +15,27 @@ public class VendedorController {
     VendedorRepository vendedorRepository;
 
     @GetMapping("/vendedores")
-    public List<Vendedor> listaVendedor(){
+    public List<Vendedor> listaVendedor() {
         return vendedorRepository.findAll();
     }
 
     @GetMapping("/vendedor/{id}")
-    public Vendedor listaVendedorUnico(@PathVariable(value = "id") long id){
+    public Vendedor listaVendedorUnico(@PathVariable(value = "id") long id) {
         return vendedorRepository.findById(id);
     }
 
     @PostMapping("/vendedor")
     public Vendedor salvaVendedor(@RequestBody Vendedor vendedor) {
+        return vendedorRepository.save(vendedor);
+    }
+
+    @DeleteMapping("/vendedor")
+    public void deletaVendedor(@RequestBody Vendedor vendedor) {
+        vendedorRepository.delete(vendedor);
+    }
+
+    @PutMapping("/vendedor")
+    public Vendedor atualizaVendedor(@RequestBody Vendedor vendedor) {
         return vendedorRepository.save(vendedor);
     }
 }
