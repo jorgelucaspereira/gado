@@ -28,6 +28,8 @@ public class Lote implements Serializable {
 
     private Long id_vendedor;
 
+    private long id_animal_tipo;
+
     public Long getId() {
         return id;
     }
@@ -82,5 +84,13 @@ public class Lote implements Serializable {
 
     public void setId_vendedor(Long id_vendedor) {
         this.id_vendedor = id_vendedor;
+    }
+
+    public long getId_animal_tipo() {
+        return id_animal_tipo;
+    }
+
+    public void setId_animal_tipo(long id_animal_tipo) {
+        this.id_animal_tipo = id_animal_tipo;
     }
 }
