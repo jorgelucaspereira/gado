@@ -30,12 +30,13 @@ public class Usuario implements Serializable {
     private String email;
 
     @PrePersist
-    private void dataAutomatica(){
-        this.criacao = new Date();
-    }
-
     @PreUpdate
-    private void dataAtualizada(){
-        this.alteracao = new Date();
+    private void beforeSave() {
+        if (criacao == null) {
+            this.criacao = new Date();
+            this.alteracao = new Date();
+        } else {
+            this.alteracao = new Date();
+        }
     }
 }
