@@ -21,6 +21,8 @@ public class Gasto implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String motivo;
 
     private BigDecimal valor;
@@ -30,8 +32,12 @@ public class Gasto implements Serializable {
     private Boolean necessario;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

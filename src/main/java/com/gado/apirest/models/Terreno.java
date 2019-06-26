@@ -21,6 +21,8 @@ public class Terreno implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String codigo;
 
     private String descricao;
@@ -28,8 +30,12 @@ public class Terreno implements Serializable {
     private Integer hectares;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

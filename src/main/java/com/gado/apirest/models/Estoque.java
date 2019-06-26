@@ -21,6 +21,8 @@ public class Estoque implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private BigDecimal quantidade;
 
     private BigDecimal qtd_minimo;
@@ -30,8 +32,12 @@ public class Estoque implements Serializable {
     private Long id_produto;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

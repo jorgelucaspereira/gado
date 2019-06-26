@@ -21,6 +21,8 @@ public class Lote implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String id_gasto;
 
     private BigDecimal valor;
@@ -34,8 +36,12 @@ public class Lote implements Serializable {
     private long id_animal_tipo;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

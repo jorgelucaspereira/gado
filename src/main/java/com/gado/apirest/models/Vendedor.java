@@ -21,13 +21,19 @@ public class Vendedor implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String nome;
 
     private BigDecimal celular;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

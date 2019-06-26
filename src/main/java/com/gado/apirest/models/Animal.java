@@ -21,6 +21,8 @@ public class Animal implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String codigo;
 
     private String nome;
@@ -40,8 +42,12 @@ public class Animal implements Serializable {
     private Long id_terreno;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

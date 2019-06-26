@@ -21,6 +21,8 @@ public class Usuario implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String nome;
 
     private BigDecimal celular;
@@ -28,8 +30,12 @@ public class Usuario implements Serializable {
     private String email;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

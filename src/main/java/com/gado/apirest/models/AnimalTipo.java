@@ -21,6 +21,8 @@ public class AnimalTipo implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String nome;
 
     private Integer qtd_meses_venda;
@@ -28,8 +30,12 @@ public class AnimalTipo implements Serializable {
     private Integer qtd_por_hectare;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

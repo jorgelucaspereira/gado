@@ -21,6 +21,8 @@ public class Entrada implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private Long id_gasto;
 
     private String observacao;
@@ -30,8 +32,12 @@ public class Entrada implements Serializable {
     private Long id_usuario;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }

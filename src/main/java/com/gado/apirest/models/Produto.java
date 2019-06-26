@@ -21,6 +21,8 @@ public class Produto implements Serializable {
 
     private Date criacao;
 
+    private Date alteracao;
+
     private String nome;
 
     private String descricao;
@@ -34,8 +36,12 @@ public class Produto implements Serializable {
     private BigDecimal duracao_meses;
 
     @PrePersist
-    @PreUpdate
     private void dataAutomatica(){
         this.criacao = new Date();
+    }
+
+    @PreUpdate
+    private void dataAtualizada(){
+        this.alteracao = new Date();
     }
 }
