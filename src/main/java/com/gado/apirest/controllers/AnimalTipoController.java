@@ -18,31 +18,31 @@ public class AnimalTipoController {
     @Autowired
     AnimalTipoRepository animalTipoRepository;
 
-    @GetMapping("/animaisTipo")
+    @GetMapping("/animais-tipo")
     @ApiOperation(value = "Retorna uma lista de 'AnimaisTipo'")
     public List<AnimalTipo> listaAnimais() {
         return animalTipoRepository.findAll();
     }
 
-    @GetMapping("/animalTipo/{id}")
+    @GetMapping("/animal-tipo/{id}")
     @ApiOperation(value = "Retorna um único 'AnimalTipo', passando um id como parâmetro")
     public AnimalTipo listaAnimalTipoUnico(@PathVariable(value = "id") long id) {
         return animalTipoRepository.findById(id);
     }
 
-    @PostMapping("/animalTipo")
+    @PostMapping("/animal-tipo")
     @ApiOperation(value = "Salva um 'AnimalTipo'")
     public AnimalTipo salvaAnimalTipo(@RequestBody AnimalTipo animalTipo) {
         return animalTipoRepository.save(animalTipo);
     }
 
-    @DeleteMapping("/animalTipo")
+    @DeleteMapping("/animal-tipo")
     @ApiOperation(value = "Deleta um 'AnimalTipo'")
     public void deletaAnimalTipo(@RequestBody AnimalTipo animalTipo) {
         animalTipoRepository.delete(animalTipo);
     }
 
-    @PutMapping("/animalTipo")
+    @PutMapping("/animal-tipo")
     @ApiOperation(value = "Atualiza um 'AnimalTipo'")
     public AnimalTipo atualizaAnimalTipo(@RequestBody AnimalTipo animalTipo) {
         return animalTipoRepository.save(animalTipo);

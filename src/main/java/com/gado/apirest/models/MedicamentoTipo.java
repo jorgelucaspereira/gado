@@ -10,8 +10,8 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "tbl_produto")
-public class Produto implements Serializable {
+@Table(name = "tbl_medicamento_tipo")
+public class MedicamentoTipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,15 +27,9 @@ public class Produto implements Serializable {
 
     private String descricao;
 
-    private String marca;
+    private BigDecimal qtd_meses_duracao;
 
-    private BigDecimal peso;
-
-    private BigDecimal valor;
-
-    private BigDecimal duracao_meses;
-
-    private Date vencimento;
+    private Long id_animal_tipo;
 
     @PrePersist
     @PreUpdate
