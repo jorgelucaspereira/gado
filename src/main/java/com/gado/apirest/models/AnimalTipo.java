@@ -1,11 +1,14 @@
 package com.gado.apirest.models;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "tbl_animal_tipo")
 public class AnimalTipo implements Serializable {
@@ -24,43 +27,9 @@ public class AnimalTipo implements Serializable {
 
     private Integer qtd_por_hectare;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCriacao() {
-        return criacao;
-    }
-
-    public void setCriacao(Date criacao) {
-        this.criacao = criacao;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Integer getQtd_meses_venda() {
-        return qtd_meses_venda;
-    }
-
-    public void setQtd_meses_venda(Integer qtd_meses_venda) {
-        this.qtd_meses_venda = qtd_meses_venda;
-    }
-
-    public Integer getQtd_por_hectare() {
-        return qtd_por_hectare;
-    }
-
-    public void setQtd_por_hectare(Integer qtd_por_hectare) {
-        this.qtd_por_hectare = qtd_por_hectare;
+    @PrePersist
+    @PreUpdate
+    private void dataAutomatica(){
+        this.criacao = new Date();
     }
 }

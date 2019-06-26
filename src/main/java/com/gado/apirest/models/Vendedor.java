@@ -1,11 +1,14 @@
 package com.gado.apirest.models;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "tbl_vendedor")
 public class Vendedor implements Serializable {
@@ -22,36 +25,9 @@ public class Vendedor implements Serializable {
 
     private BigDecimal celular;
 
-    public Long getId() {
-        return id;
+    @PrePersist
+    @PreUpdate
+    private void dataAutomatica(){
+        this.criacao = new Date();
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCriacao() {
-        return criacao;
-    }
-
-    public void setCriacao(Date criacao) {
-        this.criacao = criacao;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public BigDecimal getCelular() {
-        return celular;
-    }
-
-    public void setCelular(BigDecimal celular) {
-        this.celular = celular;
-    }
-
 }

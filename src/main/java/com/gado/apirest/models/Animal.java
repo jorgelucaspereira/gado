@@ -1,11 +1,14 @@
 package com.gado.apirest.models;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "tbl_animal")
 public class Animal implements Serializable {
@@ -26,7 +29,9 @@ public class Animal implements Serializable {
 
     private Date nascimento;
 
-    private BigDecimal valor;
+    private BigDecimal valor_compra;
+
+    private BigDecimal valor_venda;
 
     private Long id_lote;
 
@@ -34,83 +39,9 @@ public class Animal implements Serializable {
 
     private Long id_terreno;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getCriacao() {
-        return criacao;
-    }
-
-    public void setCriacao(Date criacao) {
-        this.criacao = criacao;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public Long getId_lote() {
-        return id_lote;
-    }
-
-    public void setId_lote(Long id_lote) {
-        this.id_lote = id_lote;
-    }
-
-    public Long getId_animal_tipo() {
-        return id_animal_tipo;
-    }
-
-    public void setId_animal_tipo(Long id_animal_tipo) {
-        this.id_animal_tipo = id_animal_tipo;
-    }
-
-    public Long getId_terreno() {
-        return id_terreno;
-    }
-
-    public void setId_terreno(Long id_terreno) {
-        this.id_terreno = id_terreno;
+    @PrePersist
+    @PreUpdate
+    private void dataAutomatica(){
+        this.criacao = new Date();
     }
 }
