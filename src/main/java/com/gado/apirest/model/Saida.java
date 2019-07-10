@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -19,17 +20,25 @@ public class Saida implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     private Date criacao;
 
+    @NotNull
     private Date alteracao;
 
-    private Long id_gasto;
+    @ManyToOne
+    @JoinColumn(name = "id_gasto")
+    private Gasto gasto;
 
+    @NotNull
     private String observacao;
 
+    @NotNull
     private BigDecimal valor;
 
-    private Long id_usuario;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
     @PrePersist
     @PreUpdate

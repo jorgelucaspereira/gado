@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,13 +24,19 @@ public class Estoque implements Serializable {
 
     private Date alteracao;
 
+    @NotNull
     private BigDecimal quantidade;
 
+    @NotNull
     private BigDecimal qtd_minimo;
 
+    @NotNull
     private BigDecimal qtd_maximo;
 
-    private Long id_produto;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
 
     @PrePersist
     @PreUpdate

@@ -2,12 +2,14 @@ package com.gado.apirest.controller;
 
 import com.gado.apirest.model.Entrada;
 import com.gado.apirest.repository.EntradaRepository;
+import com.gado.apirest.service.EntradaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/gado")
@@ -17,6 +19,7 @@ public class EntradaController {
 
     @Autowired
     EntradaRepository entradaRepository;
+    @Autowired private EntradaService entradaService;
 
     @GetMapping("/entradas")
     @ApiOperation(value = "Retorna uma lista de 'Entradas'")
@@ -46,5 +49,11 @@ public class EntradaController {
     @ApiOperation(value = "Atualiza uma 'Entrada'")
     public Entrada atualizaEntrada(@RequestBody Entrada entrada) {
         return entradaRepository.save(entrada);
+    }
+
+    @GetMapping("/entradas/resumo")
+    @ApiOperation(value = "Retorna uma lista de 'Animais'")
+    public Map listaResumoEntradas() {
+        return entradaService.resumoEntradas();
     }
 }

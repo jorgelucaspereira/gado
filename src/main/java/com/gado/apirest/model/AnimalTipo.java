@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,10 +23,13 @@ public class AnimalTipo implements Serializable {
 
     private Date alteracao;
 
+    @NotNull
     private String nome;
 
+    @NotNull
     private Integer qtd_meses_venda;
 
+    @NotNull
     private Integer qtd_por_hectare;
 
     @PrePersist

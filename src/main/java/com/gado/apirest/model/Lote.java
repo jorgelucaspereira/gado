@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,17 +24,32 @@ public class Lote implements Serializable {
 
     private Date alteracao;
 
-    private String id_gasto;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_gasto")
+    private Gasto gasto;
 
+    @NotNull
+    private String codigo;
+
+    @NotNull
     private BigDecimal valor;
 
+    @NotNull
     private Boolean pago;
 
+    @NotNull
     private BigDecimal quantidade;
 
-    private Long id_vendedor;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_vendedor")
+    private Vendedor vendedor;
 
-    private long id_animal_tipo;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_animal_tipo")
+    private AnimalTipo animalTipo;
 
     @PrePersist
     @PreUpdate

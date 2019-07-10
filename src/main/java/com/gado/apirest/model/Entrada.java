@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,13 +24,21 @@ public class Entrada implements Serializable {
 
     private Date alteracao;
 
-    private Long id_gasto;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_gasto")
+    private Gasto gasto;
 
+    @NotNull
     private String observacao;
 
+    @NotNull
     private BigDecimal valor;
 
-    private Long id_usuario;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
     @PrePersist
     @PreUpdate

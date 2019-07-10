@@ -2,11 +2,15 @@ package com.gado.apirest.model;
 
 
 import lombok.Data;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,13 +27,20 @@ public class Gasto implements Serializable {
 
     private Date alteracao;
 
+    @NotNull
     private String motivo;
 
+    @NotNull
     private BigDecimal valor;
 
+    @NotNull
     private Boolean pago;
 
+    @NotNull
     private Boolean necessario;
+
+    @Transient
+    private List<Saida> saidas = new LinkedList<>();
 
     @PrePersist
     @PreUpdate

@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,8 +24,10 @@ public class Vendedor implements Serializable {
 
     private Date alteracao;
 
+    @NotNull
     private String nome;
 
+    @NotNull
     private BigDecimal celular;
 
     @PrePersist

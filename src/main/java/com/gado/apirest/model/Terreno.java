@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,10 +23,13 @@ public class Terreno implements Serializable {
 
     private Date alteracao;
 
+    @NotNull
     private String codigo;
 
+    @NotNull
     private String descricao;
 
+    @NotNull
     private Integer hectares;
 
     @PrePersist

@@ -4,6 +4,7 @@ package com.gado.apirest.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,13 +23,21 @@ public class Medicamento implements Serializable {
 
     private Date alteracao;
 
+    @NotNull
     private Date aplicacao;
 
+    @NotNull
     private String descricao;
 
-    private Long id_medicamento_tipo;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_medicamento_tipo")
+    private MedicamentoTipo medicamentoTipo;
 
-    private Long id_animal;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_animal")
+    private Animal animal;
 
     @PrePersist
     @PreUpdate
