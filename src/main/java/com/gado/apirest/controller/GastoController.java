@@ -44,9 +44,9 @@ public class GastoController {
         return gastoRepository.findById(id);
     }
 
-    @PostMapping("/gasto")
+    @PostMapping("/gasto/{id}")
     @ApiOperation(value = "Salva um 'Gasto'")
-    public Gasto salvaGasto(@RequestBody Gasto gasto) {
+    public Gasto salvaGasto(@PathVariable("id") Gasto gasto) {
         return gastoRepository.save(gasto);
     }
 

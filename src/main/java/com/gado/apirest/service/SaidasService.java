@@ -48,6 +48,8 @@ public class SaidasService {
         BigDecimal total = saidas.stream().map(item -> item.getValor()).reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
 
         resumoSaida.put("totalSaida", total);
+        resumoSaida.put("totalJorge", jorge);
+        resumoSaida.put("totalLuiz", luiz);
 
         return resumoSaida;
     }
