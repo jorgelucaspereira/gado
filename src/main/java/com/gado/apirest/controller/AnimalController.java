@@ -1,5 +1,7 @@
 package com.gado.apirest.controller;
 
+import com.gado.apirest.dto.AnimalBuilder;
+import com.gado.apirest.dto.AnimalDTO;
 import com.gado.apirest.model.Animal;
 import com.gado.apirest.repository.AnimalRepository;
 import com.gado.apirest.service.AnimalService;
@@ -20,6 +22,7 @@ public class AnimalController {
     @Autowired
     AnimalRepository animalRepository;
     @Autowired private AnimalService animalService;
+    @Autowired private AnimalBuilder animalBuilder;
 
 
     @GetMapping("/animais")
@@ -36,20 +39,22 @@ public class AnimalController {
 
     @PostMapping("/animal")
     @ApiOperation(value = "Salva um 'Animal'")
-    public Animal salvaAnimal(@RequestBody Animal animal) {
+    public Animal salvaAnimal(@RequestBody AnimalDTO animalDTO) {
+        Animal animal = animalBuilder.build(animalDTO);
         return animalRepository.save(animal);
     }
 
-    @DeleteMapping("/animal")
-    @ApiOperation(value = "Deleta um 'Animal'")
-    public void deletaAnimal(@RequestBody Animal animal) {
-        animalRepository.delete(animal);
-    }
-
-    @PutMapping("/animal")
+    @PutMapping("/animal/{id}")
     @ApiOperation(value = "Atualiza um 'Animal'")
-    public Animal atualizaAnimal(@RequestBody Animal animal) {
+    public Animal atualizaAnimal(@PathVariable("id") Animal animal, @RequestBody AnimalDTO animalDTO) {
+        animalBuilder.build(animal, animalDTO);
         return animalRepository.save(animal);
+    }
+
+    @DeleteMapping("/animal/{id}")
+    @ApiOperation(value = "Deleta um 'Animal'")
+    public void deletaAnimal(@PathVariable("id") Animal animal) {
+        animalRepository.delete(animal);
     }
 
     @GetMapping("/animais/resumo")

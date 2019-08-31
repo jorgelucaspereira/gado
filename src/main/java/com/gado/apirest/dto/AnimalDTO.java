@@ -1,8 +1,5 @@
 package com.gado.apirest.dto;
 
-import com.gado.apirest.model.AnimalTipo;
-import com.gado.apirest.model.Lote;
-import com.gado.apirest.model.Terreno;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -21,7 +18,7 @@ public class AnimalDTO {
     private Date nascimento;
     private BigDecimal valor_compra;
     private BigDecimal valor_venda;
-    private Lote lote;
-    private AnimalTipo animalTipo;
-    private Terreno terreno;
+    private long idLote;
+    private long idAnimalTipo;
+    private long idTerreno;
 }

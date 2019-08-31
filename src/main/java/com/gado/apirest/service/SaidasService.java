@@ -31,7 +31,7 @@ public class SaidasService {
 
             List<Saida> saidas = saidaRepository.findAllByGasto(gasto);
 
-            BigDecimal totalSaidasGasto = saidas.stream().map(item -> item.getValor()).reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
+            BigDecimal totalSaidasGasto = saidas.stream().map(Saida::getValor).reduce(BigDecimal.ZERO, BigDecimal::add);
 
             if (totalSaidasGasto.compareTo(gasto.getValor()) >= 0) {
                 gasto.setPago(true);
@@ -48,8 +48,6 @@ public class SaidasService {
         BigDecimal total = saidas.stream().map(item -> item.getValor()).reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
 
         resumoSaida.put("totalSaida", total);
-        resumoSaida.put("totalJorge", jorge);
-        resumoSaida.put("totalLuiz", luiz);
 
         return resumoSaida;
     }
